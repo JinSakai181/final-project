@@ -1064,10 +1064,8 @@ input::placeholder {
   align-items: center;
   border: none;
   color: white;
-  angle: 0 deg;
-  opacity: 1;
-  top: 470px;
-  left: 105px;
+
+  cursor: pointer;
 }
 .action-row {
   display: flex;
@@ -1090,8 +1088,6 @@ input::placeholder {
   align-items: center;
 }
 .play-circle img {
-  position: absolute;
-  left: 232px;
   width: 22px;
   height: 29px;
 }

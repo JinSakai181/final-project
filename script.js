@@ -86,18 +86,42 @@ buttons.forEach((button) => {
 closeBtn.addEventListener("click", () => {
   popup.classList.remove("show");
 });
-const navLinks = document.querySelectorAll(".nav_links li");
 
-navLinks.forEach((link) => {
+document.querySelectorAll(".nav_links li").forEach((link) => {
   link.addEventListener("click", () => {
-    const targetId = link.getAttribute("data-target");
-    const targetSection = document.getElementById(targetId);
+    let targetSection;
+
+    if (link.getAttribute("data-target") === "contact") {
+      targetSection = document.getElementById("contactForm");
+    } else {
+      const targetId = link.getAttribute("data-target");
+      targetSection = document.getElementById(targetId);
+    }
 
     if (targetSection) {
       targetSection.scrollIntoView({ behavior: "smooth" });
     }
   });
 });
+
+const contactBtn = document.getElementById("contact-btn");
+const contactForm = document.getElementById("contactForm");
+
+if (contactBtn && contactForm) {
+  contactBtn.addEventListener("click", () => {
+    contactForm.scrollIntoView({ behavior: "smooth" });
+  });
+}
+
+const playWrapper = document.querySelector(".play-wrapper");
+const videoWrapper = document.querySelector(".video_wrapper");
+
+if (playWrapper && videoWrapper) {
+  playWrapper.addEventListener("click", () => {
+    videoWrapper.scrollIntoView({ behavior: "smooth" });
+  });
+}
+
 document.getElementById("submitBtn").addEventListener("click", function () {
   var allValid = true;
 
@@ -215,11 +239,4 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   }
 
   alert("წარმატებით გაიგზავნა თქვენი შეტყობინება!");
-});
-
-const burgerBtn = document.getElementById("burgerBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-
-burgerBtn.addEventListener("click", () => {
-  mobileMenu.classList.toggle("active");
 });
