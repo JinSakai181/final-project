@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Lauria Laundry</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,15 +16,15 @@
     />
   </head>
   <body>
-    <section class="hero_wrapper">
+    <section class="hero_wrapper" id="home">
       <div class="top_icons">
         <div class="top_left">
           <span
             ><img src="images/clock.png" class="icon" />
-            <span class="clock">08:00 AM - 08:00PM</span>
+            <span class="clock" id="clock"></span>
           </span>
           <div>
-            <span
+            <span onclick="callAlert()" style="cursor: pointer"
               ><img src="images/telephone.png" class="icon2" /><span
                 class="number2"
                 >(+62) 123 456 789</span
@@ -29,10 +33,22 @@
           </div>
         </div>
         <div class="top_right">
-          <img src="images/facebook.png" class="social_icon" />
-          <img src="images/twitter.png" class="social_icon" />
-          <img src="images/instagram.png" class="social_icon" />
-          <img src="images/youtube.png" class="social_icon" />
+          <a href="https://www.facebook.com" target="_blank">
+            <img src="images/facebook.png" class="social_icon" alt="Facebook" />
+          </a>
+          <a href="https://www.twitter.com" target="_blank">
+            <img src="images/twitter.png" class="social_icon" alt="Twitter" />
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <img
+              src="images/instagram.png"
+              class="social_icon"
+              alt="Instagram"
+            />
+          </a>
+          <a href="https://www.youtube.com" target="_blank">
+            <img src="images/youtube.png" class="social_icon" alt="YouTube" />
+          </a>
         </div>
       </div>
 
@@ -41,20 +57,24 @@
           <img src="images/hand.png" class="logo_icon" />
           <span class="lauria"><img src="./images/Lauria.png" alt="" /></span>
         </div>
-
-        <ul class="nav_links">
-          <li class="text">Home</li>
-          <li class="text">About Us</li>
-          <li class="text">Services</li>
-          <li class="text">Pricing</li>
-          <li class="text">Contact Us</li>
+        <div class="burgeri">
+          <img src="/images/3.png" class="burger" id="burger" />
+        </div>
+        <ul class="nav_links" id="burger">
+          <li class="text" data-target="home">Home</li>
+          <li class="text" data-target="about">About Us</li>
+          <li class="text" data-target="services">Services</li>
+          <li class="text" data-target="pricing">Pricing</li>
+          <li class="text" data-target="contact">Contact Us</li>
         </ul>
 
-        <button class="quote_btn">Get a Quote</button>
+        <button class="quote_btn" onclick="changeTextSmooth()">
+          Get a Quote
+        </button>
       </nav>
 
       <div class="hero_content">
-        <h1>More Clean More Fragrant<br />With Our Laundry</h1>
+        <h1 id="heroText">More Clean More Fragrant<br />With Our Laundry</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -63,25 +83,60 @@
     </section>
     <div class="form-container">
       <div class="top-row">
-        <input type="text" placeholder="Your Name" name="name" />
-        <input type="text" placeholder="Your Address" name="address" />
+        <input
+          type="text"
+          id="name"
+          placeholder="Your Name"
+          data-placeholder="Your Name"
+        />
+        <span class="error-name"></span>
+
+        <input
+          type="text"
+          placeholder="Your Address"
+          id="address"
+          name="address"
+        />
+        <span class="error-address"></span>
       </div>
 
       <div class="bottom-row">
         <div class="inputs-row">
-          <input type="text" placeholder="Telephone" name="phone" />
-          <select name="services" class="name">
+          <input type="text" placeholder="Telephone" id="phone" name="phone" />
+          <span class="error-phone"></span>
+
+          <select name="services" id="service" class="name">
             <option value="" disabled selected>Choose Service</option>
             <option value="laundry">Laundry</option>
             <option value="dry-cleaning">Dry Cleaning</option>
             <option value="ironing">Ironing</option>
             <option value="other">Other</option>
           </select>
+          <span class="error-service"></span>
         </div>
-        <button type="button" class="get-reservation">Get Reservation</button>
+        <button type="button" id="submitBtn" class="get-reservation">
+          Get Reservation
+        </button>
+        <div
+          id="success-message"
+          style="color: #00ff00; margin-top: 10px; display: none"
+        >
+          რეგისტრაცია წარმატებით შესრულდა<!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0"
+              />
+              <title>Document</title>
+            </head>
+            <body></body>
+          </html>
+        </div>
       </div>
     </div>
-    <section class="services_about">
+    <section class="services_about" id="about">
       <div class="services_row">
         <div class="service_box">
           <img src="images/hand.png" class="service_icon" />
@@ -105,7 +160,9 @@
                 src="/images/laundry.mp4"
                 controls
               ></video>
-              <div class="gray_box"></div>
+              <div class="gray_box">
+                <img src="./images/laundry3.jpg" class="laundry1" alt="" />
+              </div>
             </div>
           </div>
 
@@ -190,7 +247,7 @@
         </div>
       </div>
     </div>
-    <div class="top_center">
+    <div class="top_center" id="services">
       <span>OUR SERVICES</span>
       <h2>We Do Laundry Services</h2>
       <h1>
@@ -228,7 +285,21 @@
         >
       </div>
     </div>
-    <div class="background"><img src="./images/Background.png" alt="" /></div>
+    <div class="background" id="background">
+      <img src="./images/Background.png" alt="Background" />
+
+      <button class="branch"><img src="./images/Branch.png" alt="" /></button>
+      <button class="branch1"><img src="./images/Branch.png" alt="" /></button>
+      <button class="branch2"><img src="./images/Branch.png" alt="" /></button>
+      <button class="branch3"><img src="./images/Branch.png" alt="" /></button>
+      <button class="branch4"><img src="./images/Branch.png" alt="" /></button>
+    </div>
+
+    <div id="popup" class="popup">
+      <p id="popupText"></p>
+      <button id="closePopup">დახურვა</button>
+    </div>
+
     <div class="container">
       <div class="left-column">
         <span> WHY CHOICE US</span>
@@ -287,7 +358,7 @@
         </div>
       </div>
     </div>
-    <section class="pricing">
+    <section class="pricing" id="pricing">
       <div class="pricing-header">
         <span>OUR PRICING</span>
         <h2>Best Price For Best Services</h2>
@@ -351,69 +422,63 @@
         </div>
       </div>
     </section>
-    <section class="team-skill">
-      <div class="skill-wrapper">
-        <div class="skill-video">
-          <div class="play-btn"><img src="./images/" alt="" /></div>
+
+    <section class="skills-section">
+      <div class="video-box">
+        <video autoplay muted loop>
+          <source
+            src="/images/laundry2.mp4"
+            class="videolaundry"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      <div class="content-box">
+        <span class="small-title">OUR TEAM SKILL</span>
+        <h2>We Have Great Team Skill<br />With Certification</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+
+        <div class="skill">
+          <div class="skill-title">
+            <span>Hand Cleaning</span>
+            <span>92%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width: 87%"></div>
+          </div>
         </div>
 
-        <div class="skill-content">
-          <span class="small-title">OUR TEAM SKILL</span>
-          <h2>We Have Great Team Skill<br />With Certification</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-
-          <div class="skill">
-            <div class="skill-text">
-              <span>Hand Cleaning</span>
-              <span>92%</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 92%"></div>
-            </div>
+        <div class="skill">
+          <div class="skill-title">
+            <span>Fast Services</span>
+            <span>98%</span>
           </div>
-
-          <div class="skill">
-            <div class="skill-text">
-              <span>Fast Services</span>
-              <span>98%</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 98%"></div>
-            </div>
+          <div class="progress">
+            <div class="progress-bar" style="width: 95%"></div>
           </div>
         </div>
       </div>
     </section>
-    <section class="feedback-contact">
-      <div class="testimonials">
-        <span class="small-title">TESTIMONIAL</span>
-        <h2>Best Feedback From Clients</h2>
-        <p class="desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt
-        </p>
-
-        <div class="testimonial-cards">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
           <div class="testimonial-card">
-            <div class="stars"></div>
-            <p class="lorem">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore.
-            </p>
-            <div class="client">
-              <div class="avatar"></div>
-              <div>
-                <p class="avatar_text"></p>
-                <span>REVIEWS ON GOOGLE</span>
+            <div class="stars">
+              <div class="star2">
+                <img src="/images/star.png" class="star2" alt="" /><img
+                  src="/images/star.png"
+                  class="star2"
+                  alt=""
+                />
+                <img src="/images/star.png" class="star2" alt="" />
+                <img src="/images/star.png" class="star2" alt="" />
+                <img src="./images/halfstar.png" class="star2" alt="" />
               </div>
             </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="stars"></div>
             <p class="stars_text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               <br />
@@ -425,17 +490,110 @@
             </p>
             <div class="client">
               <div class="avatar"></div>
-              <div>
-                Mr. John Doe
+              <div class="textbottom">
+                <p>Mr. John Doe</p>
                 <span>REVIEWS ON GOOGLE</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="dots"></div>
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="stars">
+              <div class="star2">
+                <img src="/images/star.png" class="star2" alt="" /><img
+                  src="/images/star.png"
+                  class="star2"
+                  alt=""
+                />
+                <img src="/images/star.png" class="star2" alt="" />
+                <img src="/images/star.png" class="star2" alt="" />
+                <img src="./images/halfstar.png" class="star2" alt="" />
+              </div>
+            </div>
+            <p class="stars_text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              <br />
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              <br />
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              <br />
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <div class="client">
+              <div class="avatar"></div>
+              <div class="textbottom">
+                <p>Mr. John Doe</p>
+                <span>REVIEWS ON GOOGLE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="stars">
+              <div class="star2">
+                <img src="/images/star.png" class="star2" alt="" /><img
+                  src="/images/star.png"
+                  class="star2"
+                  alt=""
+                />
+                <img src="/images/star.png" class="star2" alt="" />
+                <img src="/images/star.png" class="star2" alt="" />
+                <img src="./images/halfstar.png" class="star2" alt="" />
+              </div>
+            </div>
+            <p class="stars_text">Lorem ipsum dolor sit amet...</p>
+            <div class="client">
+              <div class="avatar"></div>
+              <div class="textbottom">
+                <p>Mr. John Doe</p>
+                <span>REVIEWS ON GOOGLE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="stars">
+              <div class="star2">
+                <img src="/images/star.png" class="star2" alt="" /><img
+                  src="/images/star.png"
+                  class="star2"
+                  alt=""
+                />
+                <img src="/images/star.png" class="star2" alt="" />
+                <img src="/images/star.png" class="star2" alt="" />
+                <img src="./images/halfstar.png" class="star2" alt="" />
+              </div>
+            </div>
+            <p class="stars_text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              <br />
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              <br />
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              <br />
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <div class="client">
+              <div class="avatar"></div>
+              <div class="textbottom">
+                <p>Mr. John Doe</p>
+                <span>REVIEWS ON GOOGLE</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+
+      <div class="swiper-pagination"></div>
+    </div>
 
     <section class="feedback-contact">
       <div class="contact">
@@ -476,15 +634,15 @@
             eiusmod tempor incididunt ut labore et dolore magna aliqua
           </p>
 
-          <form class="contact-form">
-            <input type="text" placeholder="First Name" />
-            <input type="text" placeholder="Last Name" />
-
-            <input type="email" placeholder="Email Address" />
-            <input type="text" placeholder="Subject" />
-
-            <textarea placeholder="Your Message Here ..."></textarea>
-
+          <form class="contact-form" id="contactForm">
+            <input type="text" id="firstName" placeholder="First Name" />
+            <input type="text" id="lastName" placeholder="Last Name" />
+            <input type="email" id="email" placeholder="Email Address" />
+            <input type="text" id="subject" placeholder="Subject" />
+            <textarea
+              id="message"
+              placeholder="Your Message Here ..."
+            ></textarea>
             <button type="submit">Send Message</button>
           </form>
         </div>
@@ -492,5 +650,98 @@
 
       <div class="gray-bg"></div>
     </section>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="logo">
+            <i class="fa-solid fa-hand-sparkles"></i>
+            <span><img src="./images/Logo (1).png" alt="" /></span>
+          </div>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua
+          </p>
+
+          <div class="socials">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener">
+              <i class="fab fa-facebook-f">
+                <img src="./images/facebook2.png" alt="Facebook" />
+              </i>
+            </a>
+
+            <a href="https://twitter.com" target="_blank" rel="noopener">
+              <i class="fab fa-twitter">
+                <img src="./images/twitter2.png" alt="Twitter" />
+              </i>
+            </a>
+
+            <a href="https://www.instagram.com" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin-in">
+                <img src="./images/instagram2.png" alt="Instagram" />
+              </i>
+            </a>
+
+            <a href="https://www.youtube.com" target="_blank" rel="noopener">
+              <i class="fab fa-youtube">
+                <img src="./images/youtube2.png" alt="YouTube" />
+              </i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-center">
+          <h3>Navigation</h3>
+          <ul>
+            <li data-target="home">Homepage</li>
+            <li data-target="about">About Us</li>
+            <li data-target="services">Our Services</li>
+            <li data-target="pricing">Our Pricing</li>
+            <li data-target="contact">Join Us</li>
+          </ul>
+        </div>
+
+        <div class="footer-right">
+          <h3>Our Newsletter</h3>
+          <p>
+            Subscribe Our Newsletter to get <br />
+            New Update & Big Discount Sale.
+          </p>
+
+          <input type="email" id="subscribeEmail" placeholder="Email Address" />
+          <button type="button" id="subscribeBtn">Subscribe Now</button>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        pagination: {
+          el: ".swiper-pagination",
+        },
+      });
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 2,
+        spaceBetween: 30,
+        loop: true,
+        grabCursor: true,
+        autoplay: {
+          delay: 0,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: false,
+        },
+        speed: 3000,
+        allowTouchMove: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          768: { slidesPerView: 2 },
+          480: { slidesPerView: 1 },
+        },
+      });
+    </script>
   </body>
 </html>
