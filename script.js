@@ -47,8 +47,8 @@ const texts = [
 
 function changeTextSmooth() {
   const p = document.getElementById("heroText");
-
   p.style.opacity = 0;
+  p.style.fontSize = "48px";
 
   setTimeout(() => {
     const randomText = texts[Math.floor(Math.random() * texts.length)];
@@ -240,3 +240,14 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
 
   alert("წარმატებით გაიგზავნა თქვენი შეტყობინება!");
 });
+// if (isValid) {
+//   successMessage.style.display = "block";
+
+//   nameInput.value = "";
+//   addressInput.value = "";
+//   phoneInput.value = "";
+
+//   setTimeout(() => {
+//     successMessage.style.display = "none";
+//   }, 3000);
+// }
